@@ -47,21 +47,17 @@ class Worker {
 
   static Jedis connectToRedis(String host) {
     Jedis conn = new Jedis(host);
-    try {
-      conn.auth("redis_password");//password
-    } catch (Exception e) {
-      System.err.println("Something is wrong with auth: " + e.getMessage());
-    }
+    conn.auth("redis_password");//password
 
-    while (true) {
-      try {
-        conn.keys("*");
-        break;
-      } catch (JedisConnectionException e) {
-        System.err.println("Waiting for redis");
-        sleep(1000);
-      }
-    }
+//     while (true) {
+//       try {
+//         conn.keys("*");
+//         break;
+//       } catch (JedisConnectionException e) {
+//         System.err.println("Waiting for redis");
+//         sleep(1000);
+//       }
+//     }
 
     System.err.println("Connected to redis");
     return conn;
