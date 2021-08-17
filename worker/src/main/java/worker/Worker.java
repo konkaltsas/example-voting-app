@@ -49,16 +49,6 @@ class Worker {
     Jedis conn = new Jedis(host);
     conn.auth("redis_password"); //password
 
-//     while (true) {
-//       try {
-//         conn.keys("*");
-//         break;
-//       } catch (JedisConnectionException e) {
-//         System.err.println("Waiting for redis");
-//         sleep(1000);
-//       }
-//     }
-
     System.err.println("Connected to redis");
     return conn;
   }
